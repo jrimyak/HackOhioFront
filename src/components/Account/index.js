@@ -27,6 +27,7 @@ const styles = {
 };
 
 const AccountPage = () => (
+  <div>
   <Grid
     container
      justify='center'
@@ -46,6 +47,7 @@ const AccountPage = () => (
     </div>
    )}
    </AuthUserContext.Consumer>
+   </div>
 );
 
 const condition = authUser => !!authUser;
