@@ -101,8 +101,8 @@ const NavigationAuth = () => (
                                 size="small"
                                 variant="contained"
                                 margin="dense"
-                                >
-        Post</Button></Link>
+                                >Post
+                                </Button></Link>
        
       <SignOutButton />
    

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { AuthUserContext, withAuthorization } from './Session';
 import { withFirebase } from './Firebase';
-
+import Grid from '@material-ui/core/Grid'
 const PostsPage = () => (
   <div>
     <h1>Posts</h1>
@@ -71,6 +71,16 @@ class MessagesBase extends Component {
   render() {
     const { text, messages, loading } = this.state;
     return (
+      <Grid
+                 container
+                 spacing={0}
+                 direction="column"
+                 alignItems="center"
+                 justify="center"
+                 style={{ height: '100vh', 
+                        }}
+       
+                >
       <AuthUserContext.Consumer>
         {authUser => (
       <div>
@@ -91,6 +101,7 @@ class MessagesBase extends Component {
       </div>
       )}
       </AuthUserContext.Consumer>
+      </Grid>
     );
   }
 }

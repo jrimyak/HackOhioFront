@@ -26,7 +26,7 @@ const App = (props) => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
-      <Route path={ROUTES.POST} components={PostsPage} />
+      <Route path={ROUTES.POST} component={PostsPage} />
     </div>
   </Router>
 );
