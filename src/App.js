@@ -14,6 +14,7 @@ function App() {
     return null;
   };
   return (
+<<<<<<< HEAD
     <div style = {{overflow: 'hidden'}}>
       <BrowserRouter>
           <Route component={ScrollToTop} />
@@ -27,6 +28,23 @@ function App() {
                
               )}/>
             </BrowserRouter>
+=======
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload. helloo
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+>>>>>>> 00e03015081f722096afecef3f5efe55298c9d8e
     </div>
   );
 }

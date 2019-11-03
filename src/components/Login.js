@@ -8,7 +8,19 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/CheckBox'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container'
+<<<<<<< HEAD
 import axios from 'axios';
+=======
+
+<<<<<<< HEAD
+class Login extends React {
+    render() {
+        return(
+            <div>
+                
+            </div>
+=======
+>>>>>>> 00e03015081f722096afecef3f5efe55298c9d8e
 /**
  * useStyles function uses the Material-UI styling 
  */
@@ -122,6 +134,7 @@ class Login extends Component {
                     </form>
                 </div>
             </Container>
+>>>>>>> refs/remotes/origin/master
         )
     }
 }
