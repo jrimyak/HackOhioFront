@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import { Typography } from '@material-ui/core';
 
 const SignUpPage = () => (
   <div>
@@ -114,9 +115,9 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <p>
+  <Typography style={{textAlign: 'center'}}>
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-  </p>
+  </Typography>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 export default SignUpPage;

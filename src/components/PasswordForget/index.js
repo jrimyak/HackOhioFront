@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import { Typography } from '@material-ui/core';
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -54,9 +55,9 @@ class PasswordForgetFormBase extends Component {
   }
 }
 const PasswordForgetLink = () => (
-  <p>
+  <Typography style={{textAlign: 'center'}}>
     <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
+  </Typography>
 );
 export default PasswordForgetPage;
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
