@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/CheckBox'
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container'
-
+import axios from 'axios';
 /**
  * useStyles function uses the Material-UI styling 
  */
@@ -30,13 +30,24 @@ const styles = {
  */
 class Login extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: '',
+            password: '',
+            signedIn: false
+        }
+    }
+
+   
+
 
     render() {
         const { classes } = this.props;
         return(
             <Container component="main" maxWidth="xs">
                 <div>
-                    <form className={classes.form} noValidate>
+                    <form className={classes.form} onSubmit={this.handleSubmit}>
                     <Grid 
                     container
                     alignItems="center"
@@ -60,6 +71,7 @@ class Login extends Component {
               autoComplete="email"
               autoFocus 
               fullWidth
+              onChange={this.handleEmailChange}
              >
              </TextField>
              <TextField xs={12}
@@ -70,6 +82,7 @@ class Login extends Component {
               type="password"
               id="password"
               variant="outlined"
+              onChange={this.handlePasswordChange}
              // autoComplete="current-passwrod"
               fullWidth
              >
@@ -84,7 +97,7 @@ class Login extends Component {
               size="medium"
               variant="contained"
               margin="dense" 
-              
+            onClick={() =>{ alert(this.state.signedIn)}}
               >
               Login
               </Button> 
@@ -93,7 +106,7 @@ class Login extends Component {
                underline="hover" 
                href="#" 
                variant="body1">
-          
+                   
               Forgot password?
               </Link>
               <Link 

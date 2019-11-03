@@ -10,6 +10,14 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container'
 
 class CreateAccount extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+        }
+    }
+
+
     render() {
         const classes = this.props;
         return(
