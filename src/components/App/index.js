@@ -10,7 +10,7 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
-import PostPage from '../Post'
+import PostsPage from '../Post'
 const App = (props) => (
   <Router>
     <div>
