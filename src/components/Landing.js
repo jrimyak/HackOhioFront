@@ -25,7 +25,16 @@ class Landing extends Component {
                 >
                 <Grid item xs={12}>
 
-                    <p style = {{color: 'white'}}>welcome to our site</p>
+                   <Grid item xs={12} sm={8}>
+                   <Typography variant='h3' style={{color: '#fff'}}>Reach Out</Typography>
+                   <Typography variant='h6' style={{color: '#fff'}}>Connect with your community to make a change</Typography>
+                   
+                   </Grid>
+
+                   <Grid item xs={12} sm={6}>
+                    <img>
+                    </img>
+                   </Grid>
                 </Grid> 
          
            </Grid>   

@@ -3,13 +3,41 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
+import { TextField } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button'
+/**
+ * useStyles function uses the Material-UI styling 
+ */
+const styles = {
+  root: {
+    padding: '2px 6px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 400,
+  },
+  Typography: {
+    width: '100%',
+    maxWidth: 500,
+  },
+};
+
+
 
 const SignUpPage = () => (
+  <Grid
+  container
+   justify='center'
+   alignContent='center'
+   style={{minHeight: '90vh'}}>
   <div>
-    <h1>SignUp</h1>
+    <Typography align='center' justify='center' variant='h4'>Sign Up</Typography>
     <SignUpForm />
   </div>
+  </Grid>
 );
 
 const INITIAL_STATE = {
@@ -17,6 +45,9 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  dateOfBirth: Date,
+  city: '',
+  state: '',
   error: null,
 };
 
@@ -28,7 +59,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { username, email, passwordOne, dateOfBirth, city, state } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -39,6 +70,10 @@ class SignUpFormBase extends Component {
           .set({
             username,
             email,
+            passwordOne,
+            dateOfBirth,
+            city,
+            state
           })
           .then(() => {
             this.setState({ ...INITIAL_STATE });
@@ -65,6 +100,9 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
+      dateOfBirth,
+      city,
+      state,
       error,
     } = this.state;
 
@@ -72,44 +110,119 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      username === '' || state === '' || city === '';
 
     return (
+      <Container component="main" maxWidth="xs">
       <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
+
+        <TextField       
           value={username}
           onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
+          name="username"
+          variant="outlined"
+          required
+          fullWidth
+          id="username"
+          type='text'
+          label="Full Name"
+          autoFocus
+          style={{marginTop: '10px'}}
         />
-        <input
+        
+        <TextField
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          variant="outlined"
+          required
+          fullWidth
+          id="email"
+          label="Email"
+          style={{marginTop: '10px'}}
         />
-        <input
+        <TextField
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
+          variant="outlined"
+          required
+          fullWidth
+          id="passwordOne"
+          label="Password"
+          style={{marginTop: '10px'}}
         />
-        <input
+        <TextField
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirm Password"
+          variant="outlined"
+          required
+          fullWidth
+          id="passwordTwo"
+          label="Confirm Password"
+          style={{marginTop: '10px'}}
         />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+       <TextField
+          name="dateOfBirth"
+          value={dateOfBirth}
+          onChange={this.onChange}
+          type="date"
+          variant="outlined"
+          required
+          fullWidth
+          id="dateOfBirth"
+          label="Birthday"
+          InputLabelProps={{
+            shrink: true,
+          }}
+       //   label="Date Of Birth"
+       style={{marginTop: '10px'}}
+        />
+         <TextField
+          name="city"
+          value={city}
+          onChange={this.onChange}
+          type="text"
+          variant="outlined"
+          required
+          fullWidth
+          id="city"
+          label="City"
+          style={{marginTop: '10px'}}
+        />
+         <TextField
+          name="state"
+          value={state}
+          onChange={this.onChange}
+          type="text"
+          variant="outlined"
+          required
+          fullWidth
+          id="state"
+          label="State"
+          style={{marginTop: '10px'}}
+        />
+
+        <p style={{textAlign: 'center'}}>
+         <Button color='primary' disabled = {isInvalid} type="submit"
+              color='primary'
+              size="medium"
+              variant="contained"
+              margin="dense" >
+               {/* <button disabled = {isInvalid} type = "submit" style={{opacity: 0, textAlign: 'center', justify: 'center'}}>
+                    
+        </button>*/}
+                Sign Up
+                </Button>
+                </p>
 
         {error && <p>{error.message}</p>}
       </form>
+      </Container>
     );
   }
 }
@@ -120,5 +233,5 @@ const SignUpLink = () => (
   </Typography>
 );
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
-export default SignUpPage;
+export default withStyles(styles)(SignUpPage);
 export { SignUpForm, SignUpLink };
