@@ -10,7 +10,7 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
-import PostsPage from '../testing'
+import PostPage from '../Post'
 const App = (props) => (
   <Router>
     <div>
@@ -26,7 +26,7 @@ const App = (props) => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
-      <Route path={ROUTES.POST} components={PostsPage} />
+      <Route path={ROUTES.POST} component={PostPage} />
     </div>
   </Router>
 );
