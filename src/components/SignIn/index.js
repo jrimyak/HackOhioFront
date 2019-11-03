@@ -11,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
 /**
  * useStyles function uses the Material-UI styling 
  */
@@ -28,12 +29,18 @@ const styles = {
 };
 
 const SignInPage = () => (
+    <Grid
+    container
+     justify='center'
+     alignContent='center'
+     style={{minHeight: '90vh'}}>
     <div>
         <Typography align='center' justify='center' variant='h4'>Sign In</Typography>
         <SignInForm /> 
         <PasswordForgetLink />
         <SignUpLink />
     </div>
+    </Grid>
 );
 
 const INITIAL_STATE = {
@@ -88,7 +95,7 @@ class SignInFormBase extends Component{
                 />
              */}
 
-                <TextField xs={12}
+            <TextField xs={12}
               variant="outlined"
               margin="normal"
               label="Email Address"
@@ -127,13 +134,18 @@ class SignInFormBase extends Component{
                     placeholder = "Password"
                 /> 
             */}
-            <Button color='primary' disabled = {isInvalid} type = "submit" alignItems = 'center' justify='center'>
+            <p style={{textAlign: 'center'}}>
+            <Button color='primary' disabled = {isInvalid} type="submit"
+              color='primary'
+              size="medium"
+              variant="contained"
+              margin="dense" >
                {/* <button disabled = {isInvalid} type = "submit" style={{opacity: 0, textAlign: 'center', justify: 'center'}}>
                     
         </button>*/}
                 Sign In
                 </Button>
-
+                </p>
                 {error && <p> {error.message}</p>}
             </form>
             </div>
@@ -142,6 +154,12 @@ class SignInFormBase extends Component{
     }
 }
 
+/**
+ * Creating a margin for style 
+ */
+const style = {
+    margin: 15,
+};
 const SignInForm = compose(
     withRouter,
     withFirebase,
